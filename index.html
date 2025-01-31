@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt - Start</title>
-    <script>
-        function checkAnswer() {
-            let answer = document.getElementById("answer").value.toLowerCase();
-            if (answer === "clock") {
-                localStorage.setItem("page1_unlocked", "true");
-                window.location.href = "page1.html";
-            } else {
-                alert("Wrong answer! Try again.");
-            }
-        }
-    </script>
+    <title>Treasure Hunt</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Welcome to the Treasure Hunt!</h1>
-    <p>Clue: I have hands but no fingers. What am I?</p>
-    <input type="text" id="answer">
-    <button onclick="checkAnswer()">Submit</button>
+    <label>Enter Your Username:</label>
+    <input type="text" id="username">
+    <button onclick="saveUsername()">Start</button>
+
+    <h2>Unlocked Levels:</h2>
+    <div id="levelLinks"></div>
+
+    <h2>Leaderboard</h2>
+    <ul id="leaderboard"></ul>
+
 </body>
 </html>
