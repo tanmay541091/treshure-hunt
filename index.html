@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt - Start</title>
+    <script>
+        function checkAnswer() {
+            let answer = document.getElementById("answer").value.toLowerCase();
+            if (answer === "clock") {
+                localStorage.setItem("page1_unlocked", "true");
+                window.location.href = "page1.html";
+            } else {
+                alert("Wrong answer! Try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Treasure Hunt!</h1>
+    <p>Clue: I have hands but no fingers. What am I?</p>
+    <input type="text" id="answer">
+    <button onclick="checkAnswer()">Submit</button>
+</body>
+</html>
