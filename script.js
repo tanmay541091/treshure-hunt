@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!username) {
         localStorage.setItem("level", "0");
     }
-
-    updateLeaderboard();
     updateLevelLinks();
 });
 
@@ -13,7 +11,6 @@ function saveUsername() {
     if (username) {
         localStorage.setItem("username", username);
         localStorage.setItem("level", "0"); // Reset progress
-        updateLeaderboard();
         updateLevelLinks();
     }
 }
@@ -22,7 +19,6 @@ function checkAnswer(level, validAnswers) {
     let answer = document.getElementById("answer").value.toLowerCase().trim();
     if (validAnswers.includes(answer)) {
         localStorage.setItem("level", level); 
-        updateLeaderboard();
         if (level === 5) {
             window.location.href = "reward.html";
         } else {
@@ -48,24 +44,4 @@ function updateLevelLinks() {
             levelLinks.appendChild(document.createElement("br"));
         }
     }
-}
-
-function updateLeaderboard() {
-    let leaderboard = document.getElementById("leaderboard");
-    if (!leaderboard) return;
-
-    let username = localStorage.getItem("username");
-    let currentLevel = localStorage.getItem("level");
-
-    let users = JSON.parse(localStorage.getItem("leaderboard")) || {};
-    if (username) users[username] = currentLevel;
-
-    localStorage.setItem("leaderboard", JSON.stringify(users));
-
-    leaderboard.innerHTML = "";
-    Object.keys(users).forEach(user => {
-        let li = document.createElement("li");
-        li.innerText = `${user}: Level ${users[user]}`;
-        leaderboard.appendChild(li);
-    });
 }
